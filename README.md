@@ -12,6 +12,8 @@
 * Keep going until all cards are paired to win the game
 * The goal is to pair cards with least amount of moves and time required
 
+#### Play with it [here](https://nyafologus.github.io/frontend-nanodegree-memory-game/ "Match the cards!")!
+
 ![Matching Game](img/matchingGame.png "Continue pairing cards in Matching Game")
 
 ## Implementation
