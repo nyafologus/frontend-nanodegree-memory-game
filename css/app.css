@@ -1,0 +1,286 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: url("../img/sky.jpg");
+  font: 1.3rem "Lato", sans-serif;
+  color: #222;
+  font-weight: 400;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+h1 {
+  -webkit-text-stroke: 1px black;
+  background: -webkit-linear-gradient(#2e3d49, #aa7ecd, #9f96ff, #97e8b9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font: 5rem "Lato", sans-serif;
+  margin: 25px auto;
+}
+
+/*
+ * Styles for the deck of cards
+ */
+
+.deck {
+  width: 600px;
+  min-height: 600px;
+  background: linear-gradient(to bottom right, #9f96ff, #aa7ecd);
+  padding: 22px;
+  border-radius: 8px;
+  box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 0 3em;
+}
+
+.deck .card {
+  height: 125px;
+  width: 125px;
+  background: rgba(240, 243, 245, 0.1);
+  font-size: 0;
+  color: #ffffff;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+}
+
+.deck .card.open {
+  transform: rotateY(0);
+  background: linear-gradient(
+    to bottom right,
+    #97e8b9,
+    #98d4ca,
+    #9babeb,
+    #9f96ff
+  );
+  cursor: default;
+  font-size: 33px;
+}
+
+.open {
+  visibility: visible !important;
+  opacity: 100 !important;
+}
+
+.deck .card.paired {
+  cursor: default;
+  background: linear-gradient(to bottom right, #9babeb, #9f96ff, #aa7ecd);
+  font-size: 33px;
+  -webkit-backface-visibility: visible !important;
+  backface-visibility: visible !important;
+  animation-duration: 0.25s;
+}
+
+.deck .card.unpaired {
+  animation-name: pulse;
+  -webkit-backface-visibility: visible !important;
+  backface-visibility: visible !important;
+  /*   animation-duration: .05s;*/
+  background: linear-gradient(to bottom left, #98d4ca, #9babeb);
+}
+
+.deck .card.disabled {
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+/*
+ * Styles for the Score Panel
+ */
+
+.score-panel {
+  text-align: left;
+  width: 345px;
+  margin-bottom: 10px;
+}
+
+.score-panel .stars {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  margin: 0 5px 0 0;
+}
+
+.score-panel .stars li {
+  list-style: none;
+  display: inline-block;
+}
+
+.score-panel .restart {
+  float: right;
+  cursor: pointer;
+}
+
+.timer {
+  display: inline-block;
+  margin: 0 1rem;
+}
+
+/*
+ * congratulations popup styles
+ */
+
+.front {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.3);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+  border-radius: 8px;
+}
+
+.front:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: linear-gradient(to bottom right, #9babeb, #9f96ff, #aa7ecd);
+  border-radius: 8px;
+  width: 45%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+
+.popup .section1,
+.section2 {
+  max-height: 30%;
+  overflow: auto;
+  text-align: center;
+  color: #aa77dd;
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #aa7ecd;
+  text-align: center;
+}
+
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+
+.popup .close:hover {
+  color: #aa77dd;
+}
+
+/*.show {
+    visibility: visible !important;
+    opacity: 100 !important;
+}*/
+
+#starRating li {
+  display: inline-block;
+}
+
+.fa-star {
+  color: #ffd700;
+}
+
+#restart {
+  background: linear-gradient(to bottom right, #9babeb, #9f96ff, #aa7ecd);
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  display: block;
+  margin: 0 auto;
+  width: 50%;
+  color: #ffffff;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/*!
+//  * A lightweight, dependency-free and responsive javascript plugin for particle backgrounds.
+//  *
+//  * @author Marc Bruederlin <hello@marcbruederlin.com>
+//  * @version 2.2.1
+//  * @license MIT
+//  * @see https://github.com/marcbruederlin/particles.js
+//  */
+
+/* background particles.js */
+
+.background {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
+
+/** Responsiveness **/
+
+@media only screen and (max-width: 700px) {
+  .deck {
+    width: 85%;
+    padding: 16px;
+    min-height: 100vw;
+  }
+
+  .deck .card {
+    width: 16vw;
+    height: 16vw;
+  }
+
+  .score-panel {
+    width: 85%;
+  }
+
+  #play-again {
+    background: linear-gradient(to bottom right, #9babeb, #9f96ff, #aa7ecd);
+    padding: 0.3rem 0.5rem;
+    font-size: 0.5rem;
+    display: block;
+    margin: 0 auto;
+    width: 70%;
+    color: #ffffff;
+    border-radius: 8px;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .score-panel {
+    font-size: 16px;
+  }
+}
