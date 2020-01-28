@@ -17,7 +17,8 @@ body {
 }
 
 body {
-  background: url("../img/sky.jpg");
+  background: url("../img/colours.jpg");
+  background-position: center;
   font: 1.3rem "Lato", sans-serif;
   color: #222;
   font-weight: 400;
